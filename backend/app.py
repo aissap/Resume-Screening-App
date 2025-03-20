@@ -3,11 +3,14 @@ import pickle
 import docx  # Extract text from Word file
 import PyPDF2  # Extract text from PDF
 import re
+import os
 
 # Load pre-trained model and TF-IDF vectorizer (ensure these are saved earlier)
-svc_model = pickle.load(open('clf.pkl', 'rb'))  # Example file name, adjust as needed
-tfidf = pickle.load(open('tfidf.pkl', 'rb'))  # Example file name, adjust as needed
-le = pickle.load(open('encoder.pkl', 'rb'))  # Example file name, adjust as needed
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+svc_model = pickle.load(open(os.path.join(base_dir, 'clf.pkl'), 'rb'))
+tfidf = pickle.load(open(os.path.join(base_dir, 'tfidf.pkl'), 'rb'))
+le = pickle.load(open(os.path.join(base_dir, 'encoder.pkl'), 'rb'))
 
 
 # Function to clean resume text
